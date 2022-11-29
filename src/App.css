@@ -1,0 +1,54 @@
+.App {
+  text-align: center;
+}
+
+.disabled {
+ display :none
+}
+
+.enabled {
+ display: block;
+}
+
+/* 
+.self::before{
+  content:"";
+  background:red;
+  display: block;
+  width: 10px;
+  height: 10px;
+
+}
+.self::after{
+  content:"";
+  background:red;
+  display: block;
+  width: 10px;
+  height: 10px;
+
+}
+
+.others::before{
+  content:"";
+  background:blue;
+  display: block;
+  width: 10px;
+  height: 10px;
+}
+.others::after{
+  content:"";
+  background:blue;
+  display: block;
+  width: 10px;
+  height: 10px;
+} */
+
+.self{
+  border-left: 5px solid red;
+}
+.others{
+  border-left: 5px solid #1976D2;
+}
+.first{
+  border-right: 5px solid #1976D2;
+}
