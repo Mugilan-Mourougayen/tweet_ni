@@ -35,7 +35,7 @@ function App() {
         method: 'eth_requestAccounts'}
       );
       localStorage.setItem("acc", account[0]);
-     
+      readtweet()
       
 
     }
@@ -216,11 +216,11 @@ return (
   <div style={{margin:"20px",padding:"50px"}}>
 
   <span style={{margin:"30px"}}>Message:</span> 
- <TextField  id="outlined-basic"  variant="outlined" size="small" onChange={(e)=>{setMsg(e.target.value)}} />
+ <TextField  id="outlined-basic"  variant="outlined" size="small" value={msg} onChange={(e)=>{setMsg(e.target.value)}} />
 
 
  <span style={{margin:"30px"}}>Name:</span> 
- <TextField id="outlined-basic"  variant="outlined" size="small" onChange={(e)=>{setName(e.target.value)}} />
+ <TextField id="outlined-basic"  variant="outlined" size="small" value={name} onChange={(e)=>{setName(e.target.value)}} />
 
 
 
