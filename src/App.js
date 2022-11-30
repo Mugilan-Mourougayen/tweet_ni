@@ -5,12 +5,13 @@ import {useEffect,useState} from "react";
 import "./App.css"
 import { Button,  TextField } from "@mui/material";
 import Swal from "sweetalert2";
-
+import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-
+import AppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
+import FlutterDashIcon from '@mui/icons-material/FlutterDash';
 
 function App() {
  
@@ -213,6 +214,13 @@ async function deletefunction(id,add) {
 
 return (
 <div className="app">
+<Box sx={{ flexGrow: 1 }} >
+<AppBar position="static" style={{padding:"10px"}}>
+ <span style={{display:"flex",justifyContent:'center'}}>
+   Tweet Ni <FlutterDashIcon style={{paddingLeft:"5px"}}/>
+  </span>
+  </AppBar>
+</Box>
   <div style={{margin:"20px",padding:"50px"}}>
 
   <span style={{margin:"30px"}}>Message:</span> 
@@ -224,7 +232,7 @@ return (
 
 
 
-  <Button style={{marginLeft:"100px", backgroundColor: "#00974e"}} variant="contained" onClick={addtweet} size="small">add</Button>
+  <Button style={{marginLeft:"100px", backgroundColor: "#00974e"}} variant="contained" onClick={addtweet} size="small"> send Tweet<FlutterDashIcon style={{paddingLeft:"5px"}}/></Button>
 
 
 
@@ -244,7 +252,7 @@ return (
          
        
         
-<Card key={id} sx={{ maxWidth: "100%" }}  className={id===0?"first":"last"} style={{background:'#dad9d9',marginBottom:"10px"}}>
+<Card key={id} sx={{ maxWidth: "100%" }}  className={id===0?"first":"last"} style={{background:'#dad9d9',marginBottom:"10px",margin:"10px"}}>
     {console.log(id)}
       <CardContent className={accounts.toLowerCase()===dat.address.toLowerCase()?"self":"others"} style={{padding:"10px 0px 0px 30px"}}>
         <Typography  variant="h5" style={{margin:0}}>
