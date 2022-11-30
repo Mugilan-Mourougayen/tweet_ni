@@ -3,7 +3,7 @@ import lockabi from "./artifacts/contracts/Lock.sol/Lock.json"
 import { ethers } from "ethers";
 import {useEffect,useState} from "react";
 import "./App.css"
-import { Button,  TextField } from "@mui/material";
+import { Button,  Grid,  TextField } from "@mui/material";
 import Swal from "sweetalert2";
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -27,8 +27,8 @@ function App() {
 
 
 
-  // const mainaddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
-  const mainaddress = "0x1a65429A8824055A255fFdF440a5Cfc6347dB1cf"
+  const mainaddress = "0xA306CF4e1d0DD4C1450436eb21C32D3954e1ea02"
+  // const mainaddress = "0x1a65429A8824055A255fFdF440a5Cfc6347dB1cf"
   
   async function connectAccount(){
     if(window.ethereum){
@@ -85,8 +85,46 @@ catch(err){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 async function edittweet(oldmsg,newmsg,id) {
   if(window.ethereum){
+    console.log("hello here")
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(
@@ -94,10 +132,13 @@ async function edittweet(oldmsg,newmsg,id) {
       lockabi.abi,
       signer
     );
+    console.log(contract)
     try{
-      const responce = await contract.replace(oldmsg,newmsg,id)
+      const responce = await contract.replacemsg(oldmsg,newmsg,id)
       console.log("response",responce)
-      Swal.fire('Tweet has been updated plz update the chat')
+      // setMsg("")
+      // setName("")
+      Swal.fire('Tweet has been added plz update the chat')
   
     }
 catch(err){
@@ -107,6 +148,62 @@ catch(err){
 
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// async function edittweet(oldmsg,newmsg,id) {
+//   console.log(oldmsg,newmsg,id)
+//   if(window.ethereum){
+//     const provider = new ethers.providers.Web3Provider(window.ethereum);
+//     const signer = provider.getSigner();
+//     const contract = new ethers.Contract(
+//       mainaddress,
+//       lockabi.abi,
+//       signer
+//     );
+//     try{
+//       const responce = await contract.replace(oldmsg,newmsg,id)
+//       console.log("response",responce)
+//       Swal.fire('Tweet has been updated plz update the chat')
+  
+//     }
+// catch(err){
+//   console.log("err",err)
+
+// }
+
+//   }
+// }
 
 
 
@@ -221,23 +318,29 @@ return (
   </span>
   </AppBar>
 </Box>
+  <Button onClick={readtweet} variant="contained"  size="small" style={{ float: "right",backgroundColor:"#00974e",margin:"10px"}}>Update</Button>
   <div style={{margin:"20px",padding:"50px"}}>
+<Grid container>
+<Grid item>
 
   <span style={{margin:"30px"}}>Message:</span> 
  <TextField  id="outlined-basic"  variant="outlined" size="small" value={msg} onChange={(e)=>{setMsg(e.target.value)}} />
+</Grid>
 
+ <Grid item>
 
  <span style={{margin:"30px"}}>Name:</span> 
  <TextField id="outlined-basic"  variant="outlined" size="small" value={name} onChange={(e)=>{setName(e.target.value)}} />
+ </Grid>
 
 
 
   <Button style={{marginLeft:"100px", backgroundColor: "#00974e"}} variant="contained" onClick={addtweet} size="small"> send Tweet<FlutterDashIcon style={{paddingLeft:"5px"}}/></Button>
+</Grid>
 
 
 
 
-  <Button onClick={readtweet} variant="contained"  size="small" style={{ float: "right",backgroundColor:"#00974e"}}>Update</Button>
   </div>
 
 {data&&
